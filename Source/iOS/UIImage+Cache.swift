@@ -24,8 +24,8 @@ extension UIImage: Cachable {
    */
   public func encode() -> Data? {
     return hasAlpha
-      ? UIImagePNGRepresentation(self)
-      : UIImageJPEGRepresentation(self, 1.0)
+        ? self.pngData()
+      : self.jpegData(compressionQuality: 1.0)
   }
 }
 

@@ -1,5 +1,4 @@
 import Foundation
-import SwiftHash
 
 /**
  File-based cache storage.

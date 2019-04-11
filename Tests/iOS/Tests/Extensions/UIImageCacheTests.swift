@@ -14,7 +14,7 @@ final class UIImageCacheTests: XCTestCase {
   /// Test that it encodes to NSData
   func testEncode() {
     let image = TestHelper.image()
-    let data = UIImagePNGRepresentation(image)
+    let data = image.pngData()
     let result = image.encode()!
 
     XCTAssertEqual(result, data)

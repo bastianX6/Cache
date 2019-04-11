@@ -77,11 +77,11 @@ class CacheManager: NSObject {
                                      name: NSNotification.Name.NSApplicationDidResignActive, object: nil)
     #else
       notificationCenter.addObserver(self, selector: #selector(clearExpiredDataInFrontStorage),
-                                     name: .UIApplicationDidReceiveMemoryWarning, object: nil)
+                                     name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
       notificationCenter.addObserver(self, selector: #selector(clearExpiredDataInBackStorage),
-                                     name: .UIApplicationWillTerminate, object: nil)
+                                     name: UIApplication.willTerminateNotification, object: nil)
       notificationCenter.addObserver(self, selector: #selector(CacheManager.applicationDidEnterBackground),
-                                     name: .UIApplicationDidEnterBackground, object: nil)
+                                     name: UIApplication.didEnterBackgroundNotification, object: nil)
     #endif
 
     // Clear expired cached objects.
@@ -135,7 +135,7 @@ class CacheManager: NSObject {
    */
   private func endBackgroundTask(_ task: inout UIBackgroundTaskIdentifier) {
     UIApplication.shared.endBackgroundTask(task)
-    task = UIBackgroundTaskInvalid
+    task = UIBackgroundTaskIdentifier.invalid
   }
 
   #endif
